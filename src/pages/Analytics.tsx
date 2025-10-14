@@ -1,11 +1,10 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { Calendar, Download, TrendingUp, DollarSign, Users, Mail } from "lucide-react";
+import { Calendar, Download, TrendingUp, DollarSign, Users, Target } from "lucide-react";
 import { KPICard } from "@/components/analytics/KPICard";
 import { ConversionFunnel } from "@/components/analytics/ConversionFunnel";
 import { RevenueChart } from "@/components/analytics/RevenueChart";
 import { BookingTrends } from "@/components/analytics/BookingTrends";
-import { EmailAnalytics } from "@/components/analytics/EmailAnalytics";
 import { EngagementMetrics } from "@/components/analytics/EngagementMetrics";
 import { PerformanceTable } from "@/components/analytics/PerformanceTable";
 import {
@@ -83,12 +82,12 @@ const Analytics = () => {
               trend="up"
             />
             <KPICard
-              title="Email Open Rate"
-              value="80%"
-              change={-1.2}
+              title="Completion Rate"
+              value="95%"
+              change={2.3}
               changeLabel="vs last period"
-              icon={Mail}
-              trend="down"
+              icon={Target}
+              trend="up"
             />
           </div>
         </section>
@@ -134,15 +133,9 @@ const Analytics = () => {
           <BookingTrends />
         </section>
 
-        {/* Email Analytics */}
-        <section>
-          <h2 className="text-2xl font-bold mb-6">Email Performance</h2>
-          <EmailAnalytics />
-        </section>
-
         {/* Engagement Metrics */}
         <section>
-          <h2 className="text-2xl font-bold mb-6">Engagement Metrics</h2>
+          <h2 className="text-2xl font-bold mb-6">Engagement & Behavior Metrics</h2>
           <EngagementMetrics />
         </section>
 
