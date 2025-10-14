@@ -35,14 +35,6 @@ const metrics = [
     trend: "Most popular",
   },
   {
-    label: "Avg Lead Time",
-    value: "5.2 days",
-    icon: Calendar,
-    color: "text-primary",
-    bgColor: "bg-primary/10",
-    trend: "Planning ahead",
-  },
-  {
     label: "No-Show Rate",
     value: "4.2%",
     icon: UserX,
@@ -60,7 +52,7 @@ const metrics = [
   },
   {
     label: "New Customers",
-    value: "66%",
+    value: "3,135",
     icon: Users,
     color: "text-success",
     bgColor: "bg-success/10",
