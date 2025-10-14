@@ -8,11 +8,11 @@ interface FunnelStage {
 }
 
 const stages: FunnelStage[] = [
-  { name: "Page Views", value: 12500, percentage: 100 },
-  { name: "Form Started", value: 8750, percentage: 70 },
-  { name: "Form Completed", value: 6250, percentage: 50 },
-  { name: "Paid", value: 5000, percentage: 40 },
-  { name: "Confirmed", value: 4750, percentage: 38 },
+  { name: "Landing Page Visits", value: 12500, percentage: 100 },
+  { name: "Booking Page Views", value: 9500, percentage: 76 },
+  { name: "Started Booking", value: 7200, percentage: 58 },
+  { name: "Completed Booking", value: 5300, percentage: 42 },
+  { name: "Successful Payment", value: 4750, percentage: 38 },
 ];
 
 export const ConversionFunnel = () => {

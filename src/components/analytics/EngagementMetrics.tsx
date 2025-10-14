@@ -1,5 +1,16 @@
 import { Card } from "@/components/ui/card";
-import { CheckCircle2, RefreshCw, Layout, XCircle, Calendar, UserX, TrendingUp, Users } from "lucide-react";
+import { CheckCircle2, RefreshCw, Layout, XCircle, UserX, TrendingUp, Users } from "lucide-react";
+import { LineChart, Line, ResponsiveContainer } from "recharts";
+
+const newCustomerData = [
+  { value: 2100 },
+  { value: 2400 },
+  { value: 2200 },
+  { value: 2700 },
+  { value: 2900 },
+  { value: 3000 },
+  { value: 3135 },
+];
 
 const metrics = [
   {
@@ -60,23 +71,59 @@ const metrics = [
   },
 ];
 
+
 export const EngagementMetrics = () => {
+  const regularMetrics = metrics.filter(m => m.label !== "New Customers");
+  const newCustomerMetric = metrics.find(m => m.label === "New Customers");
+
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-      {metrics.map((metric) => (
-        <Card key={metric.label} className="p-5 hover:shadow-md transition-shadow">
-          <div className="flex items-start justify-between mb-3">
+    <div className="space-y-4">
+      {/* New Customers - Expanded Card with Graph */}
+      {newCustomerMetric && (
+        <Card className="p-6 hover:shadow-md transition-shadow">
+          <div className="flex items-start justify-between mb-4">
             <div className="flex-1">
-              <p className="text-sm text-muted-foreground mb-1">{metric.label}</p>
-              <p className="text-2xl font-bold text-foreground">{metric.value}</p>
+              <p className="text-sm text-muted-foreground mb-1">{newCustomerMetric.label}</p>
+              <p className="text-4xl font-bold text-foreground">{newCustomerMetric.value}</p>
+              <p className="text-sm text-muted-foreground mt-2">{newCustomerMetric.trend}</p>
             </div>
-            <div className={`p-2.5 rounded-lg ${metric.bgColor}`}>
-              <metric.icon className={`h-5 w-5 ${metric.color}`} />
+            <div className={`p-3 rounded-lg ${newCustomerMetric.bgColor}`}>
+              <newCustomerMetric.icon className={`h-6 w-6 ${newCustomerMetric.color}`} />
             </div>
           </div>
-          <p className="text-xs text-muted-foreground">{metric.trend}</p>
+          <div className="h-24 mt-4">
+            <ResponsiveContainer width="100%" height="100%">
+              <LineChart data={newCustomerData}>
+                <Line 
+                  type="monotone" 
+                  dataKey="value" 
+                  stroke="hsl(var(--success))" 
+                  strokeWidth={2}
+                  dot={false}
+                />
+              </LineChart>
+            </ResponsiveContainer>
+          </div>
         </Card>
-      ))}
+      )}
+
+      {/* Other Metrics Grid */}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+        {regularMetrics.map((metric) => (
+          <Card key={metric.label} className="p-5 hover:shadow-md transition-shadow">
+            <div className="flex items-start justify-between mb-3">
+              <div className="flex-1">
+                <p className="text-sm text-muted-foreground mb-1">{metric.label}</p>
+                <p className="text-2xl font-bold text-foreground">{metric.value}</p>
+              </div>
+              <div className={`p-2.5 rounded-lg ${metric.bgColor}`}>
+                <metric.icon className={`h-5 w-5 ${metric.color}`} />
+              </div>
+            </div>
+            <p className="text-xs text-muted-foreground">{metric.trend}</p>
+          </Card>
+        ))}
+      </div>
     </div>
   );
 };
