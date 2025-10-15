@@ -2,7 +2,6 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Calendar, Download, TrendingUp, DollarSign, Users, Target } from "lucide-react";
 import { KPICard } from "@/components/analytics/KPICard";
-import { ConversionFunnel } from "@/components/analytics/ConversionFunnel";
 import { RevenueChart } from "@/components/analytics/RevenueChart";
 import { BookingTrends } from "@/components/analytics/BookingTrends";
 import { EngagementMetrics } from "@/components/analytics/EngagementMetrics";
@@ -90,11 +89,6 @@ const Analytics = () => {
               trend="up"
             />
           </div>
-        </section>
-
-        {/* Conversion Funnel */}
-        <section>
-          <ConversionFunnel />
         </section>
 
         {/* Revenue Analytics */}
