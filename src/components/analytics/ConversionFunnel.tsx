@@ -19,32 +19,47 @@ export const ConversionFunnel = () => {
   return (
     <Card className="p-6">
       <h3 className="text-lg font-semibold mb-6">Conversion Funnel</h3>
-      <div className="space-y-4">
+      <div className="space-y-1">
         {stages.map((stage, index) => {
           const nextStage = stages[index + 1];
-          const dropOff = nextStage ? ((stage.value - nextStage.value) / stage.value * 100).toFixed(1) : null;
+          const conversionRate = nextStage ? ((nextStage.value / stage.value) * 100).toFixed(1) : null;
+          const widthPercent = (stage.percentage / stages[0].percentage) * 100;
           
           return (
-            <div key={stage.name}>
-              <div className="flex items-center gap-4">
-                <div className="flex-1">
-                  <div className="flex items-center justify-between mb-2">
-                    <span className="font-medium text-sm">{stage.name}</span>
+            <div key={stage.name} className="relative">
+              {/* Funnel Stage */}
+              <div 
+                className="mx-auto transition-all duration-300 hover:scale-[1.02]"
+                style={{ width: `${widthPercent}%` }}
+              >
+                <div className="bg-gradient-to-br from-primary/80 to-primary rounded-lg p-4 shadow-md hover:shadow-lg transition-shadow">
+                  <div className="flex items-center justify-between">
+                    <span className="font-semibold text-primary-foreground text-sm">
+                      {stage.name}
+                    </span>
                     <div className="flex items-center gap-3">
-                      <span className="text-lg font-bold">{stage.value.toLocaleString()}</span>
-                      <span className="text-sm text-muted-foreground">({stage.percentage}%)</span>
+                      <span className="text-xl font-bold text-primary-foreground">
+                        {stage.value.toLocaleString()}
+                      </span>
+                      <span className="text-xs text-primary-foreground/80 bg-primary-foreground/20 px-2 py-1 rounded">
+                        {stage.percentage}%
+                      </span>
                     </div>
-                  </div>
-                  <div className="h-12 bg-gradient-to-r from-primary to-accent rounded-lg relative overflow-hidden"
-                       style={{ width: `${stage.percentage}%` }}>
-                    <div className="absolute inset-0 bg-white/10" />
                   </div>
                 </div>
               </div>
-              {dropOff && (
-                <div className="flex items-center justify-end gap-2 mt-2 text-sm">
-                  <ChevronRight className="h-4 w-4 text-muted-foreground" />
-                  <span className="text-destructive font-medium">{dropOff}% drop-off</span>
+              
+              {/* Drop-off Indicator */}
+              {conversionRate && (
+                <div className="flex items-center justify-center gap-2 py-2">
+                  <div className="flex-1 h-px bg-border" />
+                  <div className="flex items-center gap-2 px-3 py-1 bg-muted rounded-full">
+                    <ChevronRight className="h-3 w-3 text-muted-foreground" />
+                    <span className="text-xs font-medium text-success">
+                      {conversionRate}% convert
+                    </span>
+                  </div>
+                  <div className="flex-1 h-px bg-border" />
                 </div>
               )}
             </div>
