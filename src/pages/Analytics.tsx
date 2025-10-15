@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { Calendar, Download, TrendingUp, DollarSign, Users, Target } from "lucide-react";
+import { Calendar, Download, TrendingUp, DollarSign, Target, Clock } from "lucide-react";
 import { KPICard } from "@/components/analytics/KPICard";
 import { RevenueChart } from "@/components/analytics/RevenueChart";
 import { BookingTrends } from "@/components/analytics/BookingTrends";
@@ -55,7 +55,7 @@ const Analytics = () => {
       <main className="container mx-auto px-6 py-8 space-y-8">
         {/* KPI Cards */}
         <section>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             <KPICard
               title="Total Bookings"
               value="4,750"
@@ -73,15 +73,7 @@ const Analytics = () => {
               trend="up"
             />
             <KPICard
-              title="Conversion Rate"
-              value="38%"
-              change={2.1}
-              changeLabel="vs last period"
-              icon={Users}
-              trend="up"
-            />
-            <KPICard
-              title="Completion Rate"
+              title="Payment Completion Rate"
               value="95%"
               change={2.3}
               changeLabel="vs last period"
@@ -104,9 +96,12 @@ const Analytics = () => {
                   <p className="text-sm text-success mt-2">+5.2% increase</p>
                 </div>
                 <div className="p-6 bg-card rounded-lg border">
-                  <p className="text-sm text-muted-foreground mb-2">Payment Success</p>
-                  <p className="text-3xl font-bold text-foreground">95%</p>
-                  <p className="text-sm text-success mt-2">+1.1% increase</p>
+                  <p className="text-sm text-muted-foreground mb-2">Peak Revenue Hours</p>
+                  <p className="text-3xl font-bold text-foreground">2-4 PM</p>
+                  <p className="text-sm text-muted-foreground mt-2 flex items-center gap-1">
+                    <Clock className="h-3 w-3" />
+                    Weekdays
+                  </p>
                 </div>
               </div>
               <div className="p-6 bg-gradient-to-br from-success/10 to-success/5 rounded-lg border border-success/20">
