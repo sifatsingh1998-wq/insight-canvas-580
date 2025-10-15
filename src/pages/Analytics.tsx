@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { Calendar, Download, TrendingUp, DollarSign, Target, Clock } from "lucide-react";
+import { Calendar, Download, TrendingUp, DollarSign, Clock, Target } from "lucide-react";
 import { KPICard } from "@/components/analytics/KPICard";
 import { RevenueChart } from "@/components/analytics/RevenueChart";
 import { BookingTrends } from "@/components/analytics/BookingTrends";
@@ -73,11 +73,11 @@ const Analytics = () => {
               trend="up"
             />
             <KPICard
-              title="Payment Completion Rate"
-              value="95%"
-              change={2.3}
+              title="Peak Revenue Hours"
+              value="2-4 PM"
+              change={15.7}
               changeLabel="vs last period"
-              icon={Target}
+              icon={Clock}
               trend="up"
             />
           </div>
@@ -96,12 +96,9 @@ const Analytics = () => {
                   <p className="text-sm text-success mt-2">+5.2% increase</p>
                 </div>
                 <div className="p-6 bg-card rounded-lg border">
-                  <p className="text-sm text-muted-foreground mb-2">Peak Revenue Hours</p>
-                  <p className="text-3xl font-bold text-foreground">2-4 PM</p>
-                  <p className="text-sm text-muted-foreground mt-2 flex items-center gap-1">
-                    <Clock className="h-3 w-3" />
-                    Weekdays
-                  </p>
+                  <p className="text-sm text-muted-foreground mb-2">Payment Completion Rate</p>
+                  <p className="text-3xl font-bold text-foreground">95%</p>
+                  <p className="text-sm text-success mt-2">+2.3% increase</p>
                 </div>
               </div>
               <div className="p-6 bg-gradient-to-br from-success/10 to-success/5 rounded-lg border border-success/20">
